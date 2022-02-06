@@ -11,6 +11,8 @@ Usage of ./wordler:
         comma-seperated strings the target contains
   -len int
         length of word (default 5)
+  -max int
+        max output words (default 20)
   -no string
         comma-seperated strings the target does not contain
   -not-at {index}:{letter}
