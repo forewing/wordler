@@ -54,10 +54,7 @@ type FilterAt struct {
 }
 
 func (f FilterAt) Check(s string) bool {
-	if f.Index >= len(s) {
-		panic(ErrIndexOverflow)
-	}
-	return s[f.Index] == f.Target
+	return f.Index < len(s) && f.Index >= 0 && s[f.Index] == f.Target
 }
 
 type FilterNotAt struct {
@@ -66,8 +63,5 @@ type FilterNotAt struct {
 }
 
 func (f FilterNotAt) Check(s string) bool {
-	if f.Index >= len(s) {
-		panic(ErrIndexOverflow)
-	}
-	return s[f.Index] != f.Target
+	return f.Index >= len(s) || f.Index < 0 || s[f.Index] != f.Target
 }
