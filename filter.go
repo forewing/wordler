@@ -15,7 +15,8 @@ type Filter interface {
 
 type FilterList []Filter
 
-func (l FilterList) Run(words []string) (result []string) {
+func (l FilterList) Run(words []string) []string {
+	result := []string{}
 	for _, word := range words {
 		valid := true
 		for i := range l {
