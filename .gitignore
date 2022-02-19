@@ -5,7 +5,7 @@
 *.so
 *.dylib
 /wordler
-
+/wordler-web
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,3 +15,6 @@
 
 # Fuck macOS
 .DS_Store
+
+# Test http requests
+/*.http
