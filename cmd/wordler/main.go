@@ -1,11 +1,9 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
 	"log"
-	"strconv"
 	"strings"
 
 	"github.com/forewing/wordler"
@@ -36,21 +34,9 @@ func addFilterNotContain(value string) error {
 	return nil
 }
 
-func parseAt(value string) (int, byte, error) {
-	l := strings.Split(value, ":")
-	if len(l) != 2 || len(l[1]) != 1 {
-		return 0, 0, errors.New("at should be like `2:c` ({index}:{letter})")
-	}
-	index, err := strconv.Atoi(l[0])
-	if err != nil {
-		return 0, 0, err
-	}
-	return index, l[1][0], nil
-}
-
 func addFilterAt(value string) error {
 	for _, t := range strings.Split(value, ",") {
-		index, letter, err := parseAt(t)
+		index, letter, err := wordler.ParseAt(t)
 		if err != nil {
 			return err
 		}
@@ -64,7 +50,7 @@ func addFilterAt(value string) error {
 
 func addFilterNotAt(value string) error {
 	for _, t := range strings.Split(value, ",") {
-		index, letter, err := parseAt(t)
+		index, letter, err := wordler.ParseAt(t)
 		if err != nil {
 			return err
 		}
