@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/forewing/wordler"
@@ -71,13 +70,9 @@ func init() {
 }
 
 func main() {
-	if *flagLength >= len(wordler.WordList) {
-		log.Fatalf("word length exceeds (%v > %v)", *flagLength, len(wordler.WordList)-1)
-	}
-
-	words := wordler.SolutionList
-	if *flagLength > 0 {
-		words = wordler.WordList[*flagLength]
+	words, err := wordler.GetWordList(*flagLength)
+	if err != nil {
+		panic(err)
 	}
 
 	result := filters.Run(words)
