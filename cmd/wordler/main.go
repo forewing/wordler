@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	flagLength = flag.Int("len", 5, "length of word")
+	flagLength = flag.Int("len", 0, "length of word")
 	flagMax    = flag.Int("max", 20, "max output words")
 
 	filters wordler.FilterList
@@ -89,7 +89,11 @@ func main() {
 		log.Fatalf("word length exceeds (%v > %v)", *flagLength, len(wordler.WordList)-1)
 	}
 
-	words := wordler.WordList[*flagLength]
+	words := wordler.SolutionList
+	if *flagLength > 0 {
+		words = wordler.WordList[*flagLength]
+	}
+
 	result := filters.Run(words)
 
 	if len(result) > *flagMax {

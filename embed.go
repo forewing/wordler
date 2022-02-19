@@ -7,13 +7,22 @@ import (
 
 var (
 	//go:embed resources/words.json
-	data []byte
+	words []byte
 
-	WordList [][]string
+	//go:embed resources/solutions.json
+	solutions []byte
+
+	WordList     [][]string
+	SolutionList []string
 )
 
 func init() {
-	err := json.Unmarshal(data, &WordList)
+	err := json.Unmarshal(words, &WordList)
+	if err != nil {
+		panic(err)
+	}
+
+	err = json.Unmarshal(solutions, &SolutionList)
 	if err != nil {
 		panic(err)
 	}
