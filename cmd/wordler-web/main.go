@@ -24,8 +24,9 @@ type rspError struct {
 }
 
 var (
-	flagBind = flag.String("bind", "0.0.0.0:8080", "bind address")
-	flagMax  = flag.Int("max", 1000, "max response length")
+	flagBind  = flag.String("bind", "0.0.0.0:8080", "bind address")
+	flagMax   = flag.Int("max", 1000, "max response length")
+	flagDebug = flag.Bool("debug", false, "enable debug mode")
 )
 
 func init() {
@@ -37,6 +38,10 @@ func init() {
 }
 
 func main() {
+	if !*flagDebug {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	r := gin.Default()
 	r.GET("/filter", handleFilter)
 	r.POST("/filter", handleFilter)
