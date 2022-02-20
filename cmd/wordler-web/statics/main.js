@@ -22,6 +22,7 @@ var app = new Vue({
             { 'key': 'na', 'name': 'Not at', 'data': '', 'hint': '2:c' },
         ],
         result: '',
+        format: true,
     },
     mounted() {
         for (let i = 0; i < this.filters.length; i++) {
@@ -39,7 +40,7 @@ var app = new Vue({
                     .replaceAll(' ', '').split(',').filter(s => s.length > 0);
             }
             this.result = '';
-            this.sendFilter(this.addResult, this.addResult, payload);
+            this.sendFilter(this.addResultBeautify, this.addResultBeautify, payload);
         },
         clearInput: function () {
             for (let i = 0; i < this.filters.length; i++) {
@@ -48,8 +49,15 @@ var app = new Vue({
             }
         },
         addResult: function (data) {
-            this.result += data;
+            this.result += String(data);
             this.result += "\n";
+        },
+        addResultBeautify: function (data) {
+            let space = 0;
+            if (this.format) {
+                space = 2;
+            }
+            this.addResult(JSON.stringify(data, null, space));
         },
         sendFilter: function (succ, fail, data) {
             fetch(
@@ -62,13 +70,13 @@ var app = new Vue({
             }).then(function (res) {
                 if (res.status !== 200) {
                     fail('Failed with Status Code: ' + res.status);
-                    res.text().then(fail);
+                    res.json().then(fail);
                 } else {
-                    res.text().then(succ);
+                    res.json().then(succ);
                 }
             }).catch(function (err) {
                 console.log('Fetch Error :-S', err);
-                fail(err);
+                fail(String(err));
             });
         }
     }

@@ -45,6 +45,13 @@
                                 v-bind:hint="filter.hint" v-bind:field="filter.key" v-bind:name="filter.name"
                                 v-model="filter.data">
                             </component-filter>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="" id="check-format"
+                                    v-model="format">
+                                <label class="form-check-label" for="check-format">
+                                    Format result
+                                </label>
+                            </div>
                             <div class="btn-group d-flex" role="group">
                                 <button type="button" class="btn btn-outline-success w-100"
                                     v-on:click="run">Run</button>
@@ -61,7 +68,8 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <textarea class="form-control" placeholder="Result" rows="5" v-model="result"></textarea>
+                            <textarea class="form-control" placeholder="Result" rows="15" v-model="result"
+                                style="font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;"></textarea>
                         </div>
                     </div>
                 </div>
