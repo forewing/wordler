@@ -42,7 +42,8 @@
                         </div>
                         <div class="card-body">
                             <component-filter v-for="filter in filters" v-bind:key="filter.key"
-                                v-bind:field="filter.key" v-bind:name="filter.name" v-model="filter.data">
+                                v-bind:hint="filter.hint" v-bind:field="filter.key" v-bind:name="filter.name"
+                                v-model="filter.data">
                             </component-filter>
                             <div class="btn-group d-flex" role="group">
                                 <button type="button" class="btn btn-outline-success w-100"
@@ -72,7 +73,7 @@
     <script type="text/x-template" id="component-filter">
         <div class="mb-3">
             <label class="form-label">{{ name }}</label>
-            <input type="text" class="form-control" placeholder="Filter content" v-bind:value="value"
+            <input type="text" class="form-control" v-bind:placeholder="hint" v-bind:value="value"
                 v-on:input="$emit('input', $event.target.value); store($event.target.value);">
         </div>
     </script>

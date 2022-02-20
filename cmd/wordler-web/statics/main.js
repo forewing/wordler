@@ -3,7 +3,7 @@ function getInputStorageKey(key) {
 }
 
 Vue.component('component-filter', {
-    props: ['field', 'name', 'value'],
+    props: ['field', 'name', 'value', 'hint'],
     template: "#component-filter",
     methods: {
         store: function (value) {
@@ -16,10 +16,10 @@ var app = new Vue({
     el: '#app',
     data: {
         filters: [
-            { 'key': 'has', 'name': 'Has', 'data': '' },
-            { 'key': 'no', 'name': 'No', 'data': '' },
-            { 'key': 'at', 'name': 'At', 'data': '' },
-            { 'key': 'na', 'name': 'Not at', 'data': '' }
+            { 'key': 'has', 'name': 'Has', 'data': '', 'hint': 'a,b,c' },
+            { 'key': 'no', 'name': 'No', 'data': '', 'hint': 'x,y,z' },
+            { 'key': 'at', 'name': 'At', 'data': '', 'hint': '0:a,1:b' },
+            { 'key': 'na', 'name': 'Not at', 'data': '', 'hint': '2:c' },
         ],
         result: '',
     },
