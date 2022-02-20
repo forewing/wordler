@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  wordler-web:
+    build: .
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    command: "-max 1000"
