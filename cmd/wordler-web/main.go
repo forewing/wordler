@@ -41,6 +41,12 @@ func main() {
 	r.GET("/filter", handleFilter)
 	r.POST("/filter", handleFilter)
 
+	r.SetHTMLTemplate(mustLoadTemplate())
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{})
+	})
+	r.StaticFS("/statics", http.FS(statics))
+
 	log.Println("Listening on", "http://"+*flagBind)
 	log.Println(r.Run(*flagBind))
 }
