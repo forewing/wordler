@@ -35,7 +35,8 @@ var app = new Vue({
         run: function () {
             payload = {}
             for (filter of this.filters) {
-                payload[filter.key] = filter.data.split(',').filter(s => s.length > 0);
+                payload[filter.key] = filter.data
+                    .replaceAll(' ', '').split(',').filter(s => s.length > 0);
             }
             this.result = '';
             this.sendFilter(this.addResult, this.addResult, payload);
