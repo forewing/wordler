@@ -6,6 +6,7 @@
 *.dylib
 /wordler
 /wordler-web
+/output
 
 # Test binary, built with `go test -c`
 *.test
