@@ -3,12 +3,15 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/forewing/wordler"
 )
 
 var (
+	flagVersion = flag.Bool("version", false, "display version")
+
 	flagLength = flag.Int("len", 0, "length of word")
 	flagMax    = flag.Int("max", 20, "max output words")
 
@@ -67,6 +70,11 @@ func init() {
 	flag.Func("at", "comma-seperated `{index}:{letter}`, where {letter} is at {index} (0-based) of the target", addFilterAt)
 	flag.Func("not-at", "comma-seperated `{index}:{letter}`, where {letter} is not at {index} (0-based) of the target", addFilterNotAt)
 	flag.Parse()
+
+	if *flagVersion {
+		wordler.DisplayVersion()
+		os.Exit(0)
+	}
 }
 
 func main() {

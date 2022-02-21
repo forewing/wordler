@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/forewing/wordler"
 	"github.com/gin-gonic/gin"
@@ -24,6 +25,8 @@ type rspError struct {
 }
 
 var (
+	flagVersion = flag.Bool("version", false, "display version")
+
 	flagBind  = flag.String("bind", "0.0.0.0:8080", "bind address")
 	flagMax   = flag.Int("max", 1000, "max response length")
 	flagDebug = flag.Bool("debug", false, "enable debug mode")
@@ -31,6 +34,11 @@ var (
 
 func init() {
 	flag.Parse()
+
+	if *flagVersion {
+		wordler.DisplayVersion()
+		os.Exit(0)
+	}
 
 	if *flagMax <= 0 {
 		panic("flag `-max` should be greater than 0")
