@@ -16,10 +16,10 @@ var app = new Vue({
     el: '#app',
     data: {
         filters: [
-            { 'key': 'has', 'name': 'Has', 'data': '', 'hint': 'a,b,c' },
-            { 'key': 'no', 'name': 'No', 'data': '', 'hint': 'x,y,z' },
-            { 'key': 'at', 'name': 'At', 'data': '', 'hint': '0:a,1:b' },
-            { 'key': 'na', 'name': 'Not at', 'data': '', 'hint': '2:c' },
+            { 'key': 'has', 'name': 'Has', 'data': '', 'hint': 'Ex. a,b,c' },
+            { 'key': 'no', 'name': 'No', 'data': '', 'hint': 'Ex. a,b,c' },
+            { 'key': 'at', 'name': 'At', 'data': '', 'hint': 'Ex. 0:a,1:b' },
+            { 'key': 'na', 'name': 'Not at', 'data': '', 'hint': 'Ex. 0:a,1:b' },
         ],
         result: '',
         format: true,
