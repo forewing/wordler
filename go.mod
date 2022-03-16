@@ -1,9 +1,9 @@
 module github.com/forewing/wordler
 
-go 1.17
+go 1.18
 
 require (
-	github.com/forewing/gobuild v1.1.1
+	github.com/forewing/gobuild v1.1.2
 	github.com/gin-gonic/gin v1.7.7
 )
 
@@ -22,7 +22,7 @@ require (
 	github.com/klauspost/pgzip v1.2.5 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
-	github.com/mholt/archiver/v4 v4.0.0-alpha.4 // indirect
+	github.com/mholt/archiver/v4 v4.0.0-alpha.5 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect

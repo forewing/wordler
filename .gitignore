@@ -19,3 +19,7 @@
 
 # Test http requests
 /*.http
+
+# Go Workspace
+go.work
+go.work.sum
